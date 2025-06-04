@@ -1,0 +1,14 @@
+- name: Automation of copying the war file from my workspace to tomcat
+  hosts: web
+  become: yes
+  tasks:
+    - name: Module for copying the war file
+      copy:
+      	src: /home/abhi/.jenkins/workspace/mymavenansibleweb/target/mymavenansibleweb.war
+      	dest: /opt/tomcat/webapps/mymavenansibleweb.war
+      	remote_src: no
+      	
+    - name: Restart tomcat
+      systemd:
+      	name: tomcat
+      	state: restarted
