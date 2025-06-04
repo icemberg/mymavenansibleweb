@@ -7,7 +7,7 @@
          src: /home/abhi/.jenkins/workspace/mymavenansibleweb/target/mymavenansibleweb.war
          dest: /opt/tomcat/webapps/mymavenansibleweb.war
          remote_src: no
-      become: no
+      become: yes
     - name: Restart tomcat
       systemd:
          name: tomcat
